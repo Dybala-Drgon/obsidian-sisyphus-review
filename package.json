@@ -1,0 +1,32 @@
+{
+  "name": "obsidian-sisyphus-review",
+  "version": "1.0.0",
+  "description": "以加缪的哲学视角分析你的日记内容，引导你将生活中的挑战升华为对荒谬的反抗。",
+  "main": "main.js",
+  "scripts": {
+    "dev": "node esbuild.config.mjs",
+    "build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
+    "version": "node version-bump.mjs"
+  },
+  "keywords": [
+    "obsidian",
+    "plugin",
+    "sisyphus",
+    "camus",
+    "philosophy",
+    "ai",
+    "journal"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "builtin-modules": "^3.3.0",
+    "esbuild": "^0.19.12",
+    "eslint": "^8.56.0",
+    "obsidian": "^1.4.0",
+    "typescript": "^5.3.3"
+  }
+}

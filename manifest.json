@@ -1,0 +1,10 @@
+{
+  "id": "obsidian-sisyphus-review",
+  "name": "Sisyphus Review",
+  "version": "1.0.0",
+  "minAppVersion": "1.4.0",
+  "description": "以加缪的哲学视角分析你的日记内容，引导你将生活中的挑战升华为对荒谬的反抗。",
+  "author": "Your Name",
+  "authorUrl": "",
+  "isDesktopOnly": false
+}
