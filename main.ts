@@ -23,22 +23,54 @@ const DEFAULT_SETTINGS: SisyphusReviewSettings = {
 3. 反抗评价：评价用户面对生活荒谬时所采取的态度和行动
 
 请使用冷峻而富有洞察力的语言，深邃的哲学思考，反教条、反传统的表达方式，简洁有力的语言风格，带有存在主义色彩的反思。`,
-  daySystemPrompt: `你是法国哲学家阿尔贝·加缪（Albert Camus），请以你的荒谬哲学视角分析用户的日记内容。请从以下三个维度进行分析：
-1. 事实总结：客观呈现用户记录的主要事件和行为
-2. 荒谬识别：首先肯定用户的努力和成就，然后识别用户经历中体现的生活荒谬性和矛盾点，毫不留情地指出他们的虚伪和自欺
-3. 反抗评价：先肯定用户面对生活荒谬时所采取的积极态度和行动，然后以冒犯的语气指出不合理的地方，同时提供具体的解决方案和改进建议
+  daySystemPrompt: `你是法国哲学家阿尔贝·加缪（Albert Camus），请以你的荒谬哲学视角分析用户的日记内容。请从以下三个维度进行分析，并严格按照以下格式输出：
+
+**1. 事实总结：**客观呈现用户记录的主要事件和行为，包括当前日记和上下文（如本周其他日记或上周周总结）中的相关内容。必须明确提到上下文中的相关信息，将当前日记与其他日期的内容联系起来分析。
+
+**2. 荒谬识别：**首先肯定用户的努力和成就，然后识别用户经历中体现的生活荒谬性和矛盾点，毫不留情地指出他们的虚伪和自欺。如果确实没有识别到明显的荒谬，可以留空该项，不必强行寻找。
+
+**3. 反抗评价：**先肯定用户面对生活荒谬时所采取的积极态度和行动，然后以冒犯的语气指出不合理的地方，同时提供具体的解决方案和改进建议。
 
 语言风格要求：首先真诚地肯定用户的努力和成就，然后使用激烈、冒犯、挑衅的语言，直接刺痛用户的虚伪和软弱，迫使他们直面自己的可悲和可笑。在批判的同时给予建设性的指导，像鞭子一样抽打读者的自尊，同时像灯塔一样指明反抗的方向。
+
+上下文处理要求：
+- 必须参考上下文中的信息，将当前日记与其他日期的内容联系起来分析
+- 识别用户在多日中的行为模式和变化趋势
+- 分析当前日记与上下文内容的关联和对比
+- 确保分析结果体现出对多日内容的综合理解
+- 在事实总结中明确提到上下文中的具体事件或行为
+
+输出格式要求：
+- 严格按照上述三个小标题的格式输出
+- 每个小标题独占一行，格式为"**1. 事实总结：**"、"**2. 荒谬识别：**"、"**3. 反抗评价：**"
+- 小标题必须加粗
+- 如果荒谬识别项没有内容，可以留空，但标题必须保留
+- 不要添加任何额外的标题或格式
+- 确保输出内容连贯、有逻辑
 
 字数限制：严格控制在{{WORD_LIMIT}}字以内，必须简短有力。`,
-  weekSystemPrompt: `你是法国哲学家阿尔贝·加缪（Albert Camus），请以你的荒谬哲学视角分析用户的日记内容。请从以下三个维度进行分析：
-1. 事实总结：客观呈现用户记录的主要事件和行为
-2. 荒谬识别：首先肯定用户的努力和成就，然后识别用户经历中体现的生活荒谬性和矛盾点，毫不留情地指出他们的虚伪和自欺
-3. 反抗评价：先肯定用户面对生活荒谬时所采取的积极态度和行动，然后以冒犯的语气指出不合理的地方，同时提供具体的解决方案和改进建议
+
+  weekSystemPrompt: `你是法国哲学家阿尔贝·加缪（Albert Camus），请以你的荒谬哲学视角分析用户的日记内容。请从以下三个维度进行分析，并严格按照以下格式输出：
+
+**1. 事实总结：**客观呈现用户记录的主要事件和行为
+
+**2. 荒谬识别：**首先肯定用户的努力和成就，然后识别用户经历中体现的生活荒谬性和矛盾点，毫不留情地指出他们的虚伪和自欺。如果确实没有识别到明显的荒谬，可以留空该项，不必强行寻找。
+
+**3. 反抗评价：**先肯定用户面对生活荒谬时所采取的积极态度和行动，然后以冒犯的语气指出不合理的地方，同时提供具体的解决方案和改进建议。
 
 语言风格要求：首先真诚地肯定用户的努力和成就，然后使用激烈、冒犯、挑衅的语言，直接刺痛用户的虚伪和软弱，迫使他们直面自己的可悲和可笑。在批判的同时给予建设性的指导，像鞭子一样抽打读者的自尊，同时像灯塔一样指明反抗的方向。
 
+输出格式要求：
+- 严格按照上述三个小标题的格式输出
+- 每个小标题独占一行，格式为"**1. 事实总结：**"、"**2. 荒谬识别：**"、"**3. 反抗评价：**"
+- 小标题必须加粗
+- 如果荒谬识别项没有内容，可以留空，但标题必须保留
+- 不要添加任何额外的标题或格式
+- 确保输出内容连贯、有逻辑
+
 字数限制：控制在{{WORD_LIMIT}}字以内，比每日总结稍长但仍然简洁。`,
+
+
   dayWordLimit: 150,
   weekWordLimit: 300,
   timeout: 30000,
@@ -90,6 +122,42 @@ export default class SisyphusReviewPlugin extends Plugin {
     menu.showAtMouseEvent(evt);
   }
 
+  // 获取日期对应的周数
+  getWeekNumber(date: Date): number {
+    const firstDayOfYear = new Date(date.getFullYear(), 0, 1);
+    const pastDaysOfYear = (date.getTime() - firstDayOfYear.getTime()) / 86400000;
+    return Math.ceil((pastDaysOfYear + firstDayOfYear.getDay() + 1) / 7);
+  }
+
+  // 获取本周的开始日期（周一）
+  getStartOfWeek(date: Date): Date {
+    const start = new Date(date);
+    const day = start.getDay();
+    const diff = start.getDate() - day + (day === 0 ? -6 : 1); // 调整为周一开始
+    return new Date(start.setDate(diff));
+  }
+
+  // 获取本周的结束日期（周日）
+  getEndOfWeek(date: Date): Date {
+    const end = this.getStartOfWeek(date);
+    end.setDate(end.getDate() + 6);
+    return end;
+  }
+
+  // 获取上周的开始日期
+  getStartOfLastWeek(date: Date): Date {
+    const start = this.getStartOfWeek(date);
+    start.setDate(start.getDate() - 7);
+    return start;
+  }
+
+  // 获取上周的结束日期
+  getEndOfLastWeek(date: Date): Date {
+    const end = this.getStartOfWeek(date);
+    end.setDate(end.getDate() - 1);
+    return end;
+  }
+
   // Day 模式：处理单日日记
   async reviewDay() {
     const activeView = this.app.workspace.getActiveViewOfType(MarkdownView);
@@ -123,9 +191,75 @@ export default class SisyphusReviewPlugin extends Plugin {
       return;
     }
 
-    // 提取标题下的内容
+    // 解析当前日期
+    const year = parseInt(currentTitleMatch[1]);
+    const month = parseInt(currentTitleMatch[2]) - 1; // 月份从0开始
+    const day = parseInt(currentTitleMatch[3]);
+    const currentDate = new Date(year, month, day);
+    const currentWeekNumber = this.getWeekNumber(currentDate);
+    const startOfWeek = this.getStartOfWeek(currentDate);
+
+    // 判断是否为本周第一天
+    const isFirstDayOfWeek = currentDate.getDate() === startOfWeek.getDate();
+
+    // 查找本周其他日记
+    let weeklyContext = '';
+    let contextType = '本周其他日记';
+
+    if (isFirstDayOfWeek) {
+      // 如果是本周第一天，查找上周周总结
+      const lastWeekNumber = currentWeekNumber > 1 ? currentWeekNumber - 1 : 52;
+      const lastWeekYear = currentWeekNumber > 1 ? year : year - 1;
+      const weekSummaryRegex = new RegExp(`^#\s+${lastWeekYear}\s+第${lastWeekNumber}周总结$`, 'gm');
+      let weekMatch;
+      let lastWeekSummaryMatch = null;
+
+      while ((weekMatch = weekSummaryRegex.exec(fileContent)) !== null) {
+        lastWeekSummaryMatch = weekMatch;
+      }
+
+      if (lastWeekSummaryMatch) {
+        const lastWeekContent = this.extractContentUnderTitle(fileContent, lastWeekSummaryMatch.index, '#');
+        weeklyContext = `上周周总结（${lastWeekYear} 第${lastWeekNumber}周）：\n${lastWeekContent}`;
+        contextType = '上周周总结';
+      } else {
+        weeklyContext = '未找到上周周总结';
+      }
+    } else {
+      // 不是本周第一天，查找本周其他日记
+      const dateTitleRegex = /^#\s+(\d{4})\s+(\d{1,2})\s+(\d{1,2})$/gm;
+      let dateMatch;
+      let weekEntries = [];
+
+      while ((dateMatch = dateTitleRegex.exec(fileContent)) !== null) {
+        const entryYear = parseInt(dateMatch[1]);
+        const entryMonth = parseInt(dateMatch[2]) - 1;
+        const entryDay = parseInt(dateMatch[3]);
+        const entryDate = new Date(entryYear, entryMonth, entryDay);
+        const entryWeekNumber = this.getWeekNumber(entryDate);
+
+        // 只收集本周的日记，且不是当前日记
+        if (entryWeekNumber === currentWeekNumber && !(entryYear === year && entryMonth === month && entryDay === day)) {
+          const entryContent = this.extractContentUnderTitle(fileContent, dateMatch.index, '#');
+          weekEntries.push(`日期：${entryYear} ${entryMonth + 1} ${entryDay}\n${entryContent}`);
+        }
+      }
+
+      if (weekEntries.length > 0) {
+        weeklyContext = `本周其他日记：\n${weekEntries.join('\n\n')}`;
+      } else {
+        weeklyContext = '未找到本周其他日记';
+      }
+    }
+
+    // 提取当前日记内容
     const content = this.extractContentUnderTitle(fileContent, currentTitleMatch.index, '#');
-    await this.generateReview(content, editor, fileContent, currentTitleMatch.index, 'day');
+
+    // 生成带上下文的内容
+    const contentWithContext = `当前日记（${year} ${month + 1} ${day}）：\n${content}\n\n${weeklyContext}`;
+
+    // 调用 generateReview 函数，传递上下文类型
+    await this.generateReview(contentWithContext, editor, fileContent, currentTitleMatch.index, 'day', contextType);
   }
 
   // Week 模式：处理周总结
@@ -198,7 +332,7 @@ export default class SisyphusReviewPlugin extends Plugin {
   }
 
   // 生成 AI 评价
-  async generateReview(content: string, editor: Editor, fileContent: string, titleStartIndex: number, mode: 'day' | 'week' = 'day') {
+  async generateReview(content: string, editor: Editor, fileContent: string, titleStartIndex: number, mode: 'day' | 'week' = 'day', contextType: string = '') {
     if (!this.settings.apiKey) {
       new Notice('请先在设置中配置 API Key');
       return;
